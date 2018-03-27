@@ -54,38 +54,3 @@ def move_right (screen,center):
 
 def check_orientation(values):
     return values[0] >= 0
-
-def main ():
-    screen=Create_screen()
-    show()
-    close=False
-    draw_line(screen,[300,100],[300,300])
-    draw_point(screen,[300,200])
-    show()
-    while not close:
-        for events in pygame.event.get():
-            if events.type==pygame.MOUSEBUTTONDOWN:
-                value=list(events.pos)
-                x,y=cartesianas(300,200,value[0],value[1])
-                print check_orientation([x,y])
-                if check_orientation([x,y]):
-                    while not close:
-                        if events.type==pygame.QUIT:
-                            close=True
-                            break
-                        else:
-                            move_left(screen,value)
-                            show()
-                            move_right(screen,value)
-                            show()
-                else:
-                    while not close:
-                        if events.type==pygame.QUIT:
-                            close=True
-                            break
-                        else:
-                            move_right(screen,value)
-                            show()
-                            move_left(screen,value)
-                            show()
-main()
